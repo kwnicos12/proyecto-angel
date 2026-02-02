@@ -1,0 +1,165 @@
+/* --- VARIABLES --- */
+:root {
+    --primary: #FF5722;      /* Naranja Kario */
+    --text-main: #333;
+    --text-light: #777;
+    --bg-body: #ffffff;      /* Fondo blanco limpio según la imagen */
+    --border-color: #e0e0e0;
+    --pill-radius: 50px;     /* Redondeo fuerte para efecto cápsula */
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    color: var(--text-main);
+}
+
+/* --- HEADER SUPERIOR (NAVEGACIÓN) --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Estilos para simular los iconos naranjas */
+.icon-circle {
+    width: 24px; height: 24px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 16px;
+}
+.icon-text { color: var(--primary); font-size: 1.2rem; }
+.logo-center img { height: 40px; } /* Ajustar si tienes el logo */
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+h1 { margin-bottom: 5px; font-weight: 600; color: #222; }
+p.subtitle { color: var(--text-light); margin-bottom: 40px; font-size: 0.95rem; }
+
+/* --- ESTRUCTURA DE LA TABLA (GRID) --- */
+/* Definimos las columnas exactas de la imagen */
+.grid-layout {
+    display: grid;
+    /* Columnas: Nombre | Desc | Cat | Fecha1 | Fecha2 | Fórmula | Frec | Cumplimiento | Área | Menu */
+    grid-template-columns: 2fr 2fr 0.8fr 1.2fr 1.2fr 1fr 0.8fr 1.2fr 1fr 0.5fr;
+    gap: 15px;
+    align-items: center;
+    text-align: left; /* Por defecto alineado a la izquierda */
+}
+
+/* Encabezados */
+.grid-header {
+    padding: 0 20px 10px 20px;
+    font-weight: 700;
+    color: #111;
+    font-size: 0.9rem;
+}
+
+/* Filas (Cápsulas) */
+.grid-row {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--pill-radius);
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    font-size: 0.9rem;
+    color: #555;
+    transition: transform 0.2s;
+}
+
+.grid-row:hover {
+    border-color: var(--primary); /* Pequeño efecto al pasar el mouse */
+}
+
+/* Alineaciones específicas por columna */
+.col-center { text-align: center; }
+.col-area { color: #666; }
+
+/* --- GRÁFICOS DE PORCENTAJE (ANILLOS) --- */
+.chart-ring {
+    position: relative;
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    margin: 0 auto; /* Centrado en su celda */
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 0.75rem;
+}
+
+/* Capa interior blanca para hacer el efecto de anillo */
+.chart-ring::after {
+    content: '';
+    position: absolute;
+    width: 35px; height: 35px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* El texto del porcentaje va encima del blanco */
+.chart-text { z-index: 2; position: relative; }
+
+/* Colores dinámicos usando conic-gradient */
+.red-ring {
+    background: conic-gradient(#FF3B30 var(--p), #eee 0);
+    color: #FF3B30;
+}
+.green-ring {
+    background: conic-gradient(#34C759 var(--p), #eee 0);
+    color: #34C759;
+}
+.orange-ring {
+    background: conic-gradient(#FF9500 var(--p), #eee 0);
+    color: #FF9500;
+}
+
+/* --- BOTÓN FINAL --- */
+.btn-add {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px 50px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(239, 91, 37, 0.3);
+}
+
+/* Icono de menú hamburguesa */
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+}
