@@ -4,41 +4,47 @@
     <meta charset="UTF-8">
     <title>Panel de Indicadores</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dashboard-body">
 
     <nav class="top-nav">
-        <div class="nav-left">
+        <div class="nav-group">
             <a href="#" class="nav-item">
-                <div class="icon-circle">+</div> Añadir
+                <img src="media/Group 3.svg" class="nav-icon" alt="Añadir"> Añadir
             </a>
             <a href="dashboard.html" class="nav-item">
-                <span class="icon-text">↻</span> Refrescar
+                <img src="media/Icon open-reload.svg" class="nav-icon" alt="Refrescar"> Refrescar
             </a>
             <a href="#" class="nav-item">
-                <span class="icon-text">🗑</span> Eliminar
+                <img src="media/Icon material-delete-forever.svg" class="nav-icon" alt="Eliminar"> Eliminar
             </a>
         </div>
-        
+
         <div class="logo-center">
-            <span style="color:#FF5722; font-weight:900; font-size:2rem;">K</span>
+            <img src="media/kario sin kairo.svg" alt="Kario" height="40">
         </div>
 
-        <div class="nav-right">
-            <a href="#" class="nav-item"><span class="icon-text">🐞</span> Reportar</a>
-            <a href="#" class="nav-item"><div class="icon-circle">?</div> Ayuda</a>
-            <div style="display:flex; gap:15px; color:#aaa;">
-                <span>🔔</span><span>⚙</span><span>👤</span>
+        <div class="nav-group">
+            <a href="#" class="nav-item">
+                <img src="media/Icon material-bug-report.svg" class="nav-icon" alt="Reportar"> Reportar
+            </a>
+            <a href="#" class="nav-item">
+                <div style="width:24px; height:24px; background:#EF5B25; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold;">?</div> Ayuda
+            </a>
+            
+            <div style="display:flex; align-items:center; gap:15px; margin-left:20px; border-left:1px solid #ddd; padding-left:20px;">
+                <img src="media/Icon material-notifications-active.svg" class="nav-icon" alt="Notificaciones">
+                <img src="media/Icon ionic-ios-settings.svg" class="nav-icon" alt="Ajustes">
+                <img src="media/pp.png" class="avatar-small" alt="Perfil">
             </div>
         </div>
     </nav>
 
     <main class="main-container">
-        <h1>Panel de Indicadores</h1>
+        <h1 style="margin-top:30px;">Panel de Indicadores</h1>
         <p class="subtitle">Aquí puedes visualizar los indicadores propuestos y añadidos por tu equipo de trabajo.</p>
 
-        <div class="grid-layout grid-header">
+        <div class="grid-header">
             <span>Indicador</span>
             <span>Descripción</span>
             <span class="col-center">Categoría</span>
@@ -48,112 +54,112 @@
             <span class="col-center">Frecuencia</span>
             <span class="col-center">Cumplimiento</span>
             <span class="col-center">Área</span>
-            <span></span> </div>
+            <span></span>
+        </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Modelado 3D</strong>
-            <span>Interés por dise........</span>
+            <span>Interés por dise...</span>
             <span class="col-center">Baja</span>
             <span class="col-center">12/05/21</span>
             <span class="col-center">12/12/21</span>
             <span class="col-center">Met.Ágil</span>
             <span class="col-center">1/4</span>
             <div class="col-center">
-                <div class="chart-ring red-ring" style="--p:31%">
-                    <span class="chart-text">31%</span>
+                <div class="progress-ring red" style="--p:31%">
+                    <span class="ring-text">31%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Marketing</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Marketing</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Finca Galeón</strong>
-            <span>Diseño de maque.......</span>
+            <span>Diseño de maque...</span>
             <span class="col-center">Baja</span>
             <span class="col-center">12/04/21</span>
             <span class="col-center">12/05/21</span>
             <span class="col-center">Met.Ágil</span>
             <span class="col-center">1/4</span>
             <div class="col-center">
-                <div class="chart-ring red-ring" style="--p:25%">
-                    <span class="chart-text">25%</span>
+                <div class="progress-ring red" style="--p:25%">
+                    <span class="ring-text">25%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Diseño</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Diseño</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Colegios Privados</strong>
-            <span>Se busca llegar a los....</span>
+            <span>Se busca llegar a los...</span>
             <span class="col-center">Media</span>
             <span class="col-center">24/04/21</span>
             <span class="col-center">12/11/21</span>
             <span class="col-center">Met.Fibo</span>
             <span class="col-center">1/4</span>
             <div class="col-center">
-                <div class="chart-ring green-ring" style="--p:80%">
-                    <span class="chart-text">80%</span>
+                <div class="progress-ring green" style="--p:80%">
+                    <span class="ring-text">80%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Developers</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Developers</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Electrodomésticos</strong>
-            <span>Ventas de electro......</span>
+            <span>Ventas de electro...</span>
             <span class="col-center">Media</span>
             <span class="col-center">12/04/21</span>
             <span class="col-center">12/09/21</span>
             <span class="col-center">N/A</span>
             <span class="col-center">1/3</span>
             <div class="col-center">
-                <div class="chart-ring red-ring" style="--p:32%">
-                    <span class="chart-text">32%</span>
+                <div class="progress-ring red" style="--p:32%">
+                    <span class="ring-text">32%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Gerencia</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Gerencia</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Estrato 2 - Floridablanca</strong>
-            <span>Impacto en los sec....</span>
+            <span>Impacto en los sec...</span>
             <span class="col-center">Alta</span>
             <span class="col-center">12/04/21</span>
             <span class="col-center">12/09/21</span>
             <span class="col-center">Met.Expo</span>
             <span class="col-center">1/4</span>
             <div class="col-center">
-                <div class="chart-ring green-ring" style="--p:95%">
-                    <span class="chart-text">95%</span>
+                <div class="progress-ring green" style="--p:95%">
+                    <span class="ring-text">95%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Marketing</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Marketing</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <div class="grid-layout grid-row">
+        <div class="grid-row">
             <strong>Jóvenes en Acción</strong>
-            <span>Impacto en los sec....</span>
+            <span>Impacto en los sec...</span>
             <span class="col-center">Alta</span>
             <span class="col-center">15/02/21</span>
             <span class="col-center">09/11/21</span>
             <span class="col-center">Met.Expo</span>
             <span class="col-center">1/2</span>
             <div class="col-center">
-                <div class="chart-ring orange-ring" style="--p:75%">
-                    <span class="chart-text">75%</span>
+                <div class="progress-ring orange" style="--p:75%">
+                    <span class="ring-text">75%</span>
                 </div>
             </div>
-            <span class="col-center col-area">Producción</span>
-            <span class="menu-icon">☰</span>
+            <span class="col-center">Producción</span>
+            <span style="font-size:1.5rem; cursor:pointer; text-align:right;">≡</span>
         </div>
 
-        <button class="btn-add">Añadir Elementos</button>
-
+        <button class="btn-orange" style="width:auto; padding: 15px 50px; margin-top:40px;">Añadir Elementos</button>
     </main>
 
 </body>

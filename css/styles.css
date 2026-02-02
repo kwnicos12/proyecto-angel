@@ -1,165 +1,126 @@
 /* --- VARIABLES --- */
 :root {
-    --primary: #FF5722;      /* Naranja Kario */
+    --primary: #EF5B25; /* Naranja Kario exacto */
     --text-main: #333;
-    --text-light: #777;
-    --bg-body: #ffffff;      /* Fondo blanco limpio según la imagen */
-    --border-color: #e0e0e0;
-    --pill-radius: 50px;     /* Redondeo fuerte para efecto cápsula */
+    --bg-light: #f9f9f9;
+    --pill-radius: 50px; /* Bordes redondeados tipo cápsula */
 }
 
-body {
-    background-color: var(--bg-body);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    color: var(--text-main);
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+
+/* --- 1. SPLASH SCREEN (INTRO) --- */
+.splash-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(5, 5, 5, 0.95); /* Fondo casi negro */
+    z-index: 9999;
+    display: flex; justify-content: center; align-items: center;
+    /* Desaparece a los 2.5s */
+    animation: fadeOutSplash 1s ease-in-out 2.5s forwards;
+    pointer-events: none;
+}
+.splash-logo {
+    width: 120px;
+    animation: pulseLogo 2s infinite;
 }
 
-/* --- HEADER SUPERIOR (NAVEGACIÓN) --- */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-left, .nav-right {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-/* Estilos para simular los iconos naranjas */
-.icon-circle {
-    width: 24px; height: 24px;
-    background-color: var(--primary);
-    color: white;
-    border-radius: 50%;
+/* --- 2. LOGIN & FONDO --- */
+.login-body {
+    /* Verifica si tu imagen es .png o .jpg en tu carpeta. Puse .png según tu captura de VS Code */
+    background: url('../media/pexels-pixabay-159400.png') no-repeat center center/cover;
+    height: 100vh;
     display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 16px;
-}
-.icon-text { color: var(--primary); font-size: 1.2rem; }
-.logo-center img { height: 40px; } /* Ajustar si tienes el logo */
-
-/* --- CONTENEDOR PRINCIPAL --- */
-.main-container {
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-h1 { margin-bottom: 5px; font-weight: 600; color: #222; }
-p.subtitle { color: var(--text-light); margin-bottom: 40px; font-size: 0.95rem; }
-
-/* --- ESTRUCTURA DE LA TABLA (GRID) --- */
-/* Definimos las columnas exactas de la imagen */
-.grid-layout {
-    display: grid;
-    /* Columnas: Nombre | Desc | Cat | Fecha1 | Fecha2 | Fórmula | Frec | Cumplimiento | Área | Menu */
-    grid-template-columns: 2fr 2fr 0.8fr 1.2fr 1.2fr 1fr 0.8fr 1.2fr 1fr 0.5fr;
-    gap: 15px;
-    align-items: center;
-    text-align: left; /* Por defecto alineado a la izquierda */
-}
-
-/* Encabezados */
-.grid-header {
-    padding: 0 20px 10px 20px;
-    font-weight: 700;
-    color: #111;
-    font-size: 0.9rem;
-}
-
-/* Filas (Cápsulas) */
-.grid-row {
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: var(--pill-radius);
-    padding: 12px 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    font-size: 0.9rem;
-    color: #555;
-    transition: transform 0.2s;
-}
-
-.grid-row:hover {
-    border-color: var(--primary); /* Pequeño efecto al pasar el mouse */
-}
-
-/* Alineaciones específicas por columna */
-.col-center { text-align: center; }
-.col-area { color: #666; }
-
-/* --- GRÁFICOS DE PORCENTAJE (ANILLOS) --- */
-.chart-ring {
     position: relative;
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    margin: 0 auto; /* Centrado en su celda */
+    overflow: hidden;
+}
+.overlay {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.6); z-index: 1;
+}
+.relative-z { position: relative; z-index: 2; width: 100%; display: flex; justify-content: center; }
+
+/* Tarjeta Blanca */
+.card {
+    background: white; padding: 40px; border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    text-align: center; width: 100%; max-width: 550px;
+}
+
+/* Animaciones */
+.fade-in-content { opacity: 0; animation: fadeInCard 1s ease-out 2.8s forwards; } /* Entra después del splash */
+.card-entrance { opacity: 0; animation: slideUpEnter 0.8s ease-out 0.2s forwards; } /* Para la bienvenida */
+
+/* --- FORMULARIOS & BOTONES --- */
+.input-group label { display: block; text-align: left; margin-left: 20px; color: #666; margin-bottom: 5px; }
+.input-round {
+    width: 90%; padding: 12px 20px; border: 1px solid #ccc; border-radius: 50px;
+    margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;
+    font-size: 1rem; color: #555;
+}
+.btn-orange {
+    display: block; width: 80%; margin: 20px auto 10px auto;
+    background: var(--primary); color: white; padding: 15px;
+    border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem;
+    border: none; cursor: pointer;
+}
+.btn-gray-small {
+    background: #444; color: white; padding: 8px 20px; border-radius: 20px;
+    border: none; font-size: 0.8rem; cursor: pointer;
+}
+
+/* --- DASHBOARD (PANEL) --- */
+.dashboard-body { background-color: white; }
+.top-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 40px; border-bottom: 1px solid #eee; background: white;
+}
+.nav-group { display: flex; align-items: center; gap: 30px; }
+.nav-item { 
+    text-decoration: none; color: #333; font-weight: 600; font-size: 1rem; 
+    display: flex; align-items: center; gap: 8px;
+}
+.nav-icon { height: 24px; width: auto; }
+.avatar-small { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+.main-container { max-width: 1400px; margin: 40px auto; text-align: center; padding: 0 20px; }
+.subtitle { color: #666; margin-bottom: 40px; }
+
+/* GRID DEL TABLERO */
+.grid-header {
+    display: grid;
+    /* Columnas ajustadas a ojo de la imagen */
+    grid-template-columns: 2fr 2.5fr 1fr 1.2fr 1.5fr 1fr 1fr 1fr 1fr 0.5fr;
+    gap: 10px; padding: 0 20px; margin-bottom: 10px;
+    font-weight: bold; font-size: 0.9rem; text-align: left;
+}
+.col-center { text-align: center; }
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 2fr 2.5fr 1fr 1.2fr 1.5fr 1fr 1fr 1fr 1fr 0.5fr;
+    gap: 10px; align-items: center; text-align: left;
+    background: white; border: 1px solid #ddd; border-radius: 50px;
+    padding: 12px 20px; margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03); color: #555;
+}
+
+/* ANILLOS DE PROGRESO */
+.progress-ring {
+    width: 40px; height: 40px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 0.75rem;
+    position: relative; margin: 0 auto; font-weight: bold; font-size: 0.75rem;
 }
+.progress-ring::after {
+    content: ''; position: absolute; width: 32px; height: 32px; background: white; border-radius: 50%;
+}
+.ring-text { position: relative; z-index: 2; }
+/* Colores dinámicos */
+.red { background: conic-gradient(#EF5B25 var(--p), #eee 0); color: #EF5B25; }
+.green { background: conic-gradient(#2ecc71 var(--p), #eee 0); color: #2ecc71; }
+.orange { background: conic-gradient(#FFA500 var(--p), #eee 0); color: #FFA500; }
 
-/* Capa interior blanca para hacer el efecto de anillo */
-.chart-ring::after {
-    content: '';
-    position: absolute;
-    width: 35px; height: 35px;
-    background: white;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-/* El texto del porcentaje va encima del blanco */
-.chart-text { z-index: 2; position: relative; }
-
-/* Colores dinámicos usando conic-gradient */
-.red-ring {
-    background: conic-gradient(#FF3B30 var(--p), #eee 0);
-    color: #FF3B30;
-}
-.green-ring {
-    background: conic-gradient(#34C759 var(--p), #eee 0);
-    color: #34C759;
-}
-.orange-ring {
-    background: conic-gradient(#FF9500 var(--p), #eee 0);
-    color: #FF9500;
-}
-
-/* --- BOTÓN FINAL --- */
-.btn-add {
-    background-color: var(--primary);
-    color: white;
-    padding: 15px 50px;
-    border-radius: 50px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(239, 91, 37, 0.3);
-}
-
-/* Icono de menú hamburguesa */
-.menu-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-    font-weight: bold;
-    text-align: right;
-}
+/* KEYFRAMES */
+@keyframes fadeOutSplash { 0% {opacity:1; visibility:visible;} 99% {opacity:0; visibility:visible;} 100% {opacity:0; visibility:hidden;} }
+@keyframes pulseLogo { 0%, 100% {transform: scale(1);} 50% {transform: scale(1.05);} }
+@keyframes fadeInCard { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+@keyframes slideUpEnter { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform: translateY(0);} }
