@@ -19,16 +19,37 @@
       
       <h2 style="margin: 20px 0;">Bienvenido de nuevo</h2>
       
-      <img src="media/pp.png" alt="Pedro" style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+      <img src="media/pp.png" 
+           alt="Pedro" 
+           onclick="abrirZoom()"
+           title="Clic para ampliar"
+           style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:15px; cursor: pointer; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
       
       <h3>Pedro Felipe Gómez Bonilla</h3>
       <p style="color:#777;">Usuario Administrador</p>
       
       <div style="text-align: right; margin-top: 30px;">
-        <button class="btn-gray-small">Configuración</button>
+        <a href="dashboard.html#configuracion" class="btn-gray-small" style="text-decoration:none; display:inline-block;">Configuración</a>
       </div>
     </div>
   </div>
+
+  <div id="modal-visor" class="modal-overlay" onclick="cerrarZoom()" style="display: none;">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="img-grande" src="media/pp.png">
+  </div>
+
+  <script>
+    function abrirZoom() {
+      document.getElementById('modal-visor').style.display = 'flex';
+      // Intenta cargar la versión HD si existe, si no usa la normal
+      // document.getElementById('img-grande').src = "media/pp@2x.png"; 
+    }
+
+    function cerrarZoom() {
+      document.getElementById('modal-visor').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
